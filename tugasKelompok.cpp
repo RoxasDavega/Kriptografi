@@ -300,11 +300,15 @@ string superEncrypt(int menuOpt, string text) {
 	cout << "Key String: ";
 	getline(cin, keyString);
 
-
+if (menuOpt == 1) {
 	result = caesarCipher(menuOpt, text, key);
 	result = vigenereCipher(menuOpt, result, keyString);
 	result = railFence(menuOpt, result, key);
-
+} else if (menuOpt == 2) {
+	result = railFence(menuOpt, text, key);
+	result = vigenereCipher(menuOpt, result, keyString);
+	result = caesarCipher(menuOpt, result, key);
+}
 	return result;
 }
 
